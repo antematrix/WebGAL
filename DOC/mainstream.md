@@ -44,13 +44,15 @@ graph TB;
         performController("PerformController@/\nCore/Modules/perform/\nperformController")
     end;
     nextSentence("@/Core/controller/gamePlay/nextSentence")
+    scriptExecutor("@/Core/controller/gamePlay//scriptExecutor");
 
     app -.-> App;
     stage -.-> Stage;
     gameplay -.-> Gameplay;
     index --> main --> app;
     App--> initializeScript-->WebGAL;
-    title--> startGame & continueGame --> nextSentence --o nextSentence & performController;
+    title--> startGame & continueGame --> nextSentence --> scriptExecutor;
+    nextSentence --o nextSentence & performController;
     initializeScript --> sceneFetcher & sceneParser --o sceneManager
 
 ```

@@ -1,0 +1,14 @@
+https://docs.openwebgal.com/en/webgal-script/variable.html#variable-interpolation
+
+random()的介绍
+*调动Math.random()
+*硬写入在packages\webgal\src\Core\gameScripts\setVar.ts中
+*生成的数字范围是从 0（包含）到 1（不包含）。即，它可以是 0，但不能是 1。
+*平均分布
+
+表达式运算介绍
+*已经实现的运算只有加减乘除和括号
+*运算表达式里的变量名限制[.a-zA-Z],所以不能包含其他符号
+
+布尔值介绍 true|false 
+*严格区别大小写，因此只接受小写。
