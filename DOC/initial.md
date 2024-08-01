@@ -1,23 +1,23 @@
 ## 更新中
 ```mermaid
-graph TB;
+graph LR;
     index("index\n/index.html")
     main("main\n@/main.tsx");
     app("App\n@/App.tsx");
-    app -.-> App;
-    stage -.-> Stage;
-    gameplay -.-> Gameplay;
+    initializeScript("@/Core/initializeScript.ts");
     subgraph App;
-        title("< Title />");
         translation("< Translation />\n@/UI/Translation/\nTranslation");
+        stage("< Stage />\n@/Stage/Stage");
         bottomControlPanel("< BottomControlPanel />");
         bottomControlPanelFilm("< BottomControlPanelFilm />");
         backlog("< Backlog />");
+        title("< Title />");
         logo("< Logo />");
         extra("< Extra />");
         menu("< Menu />");
         globalDialog("< GlobalDialog />");
-        stage("< Stage />\n@/Stage/Stage");
+        PanicOverlay("< PanicOverlay />@/UI/PanicOverlay/PanicOverlay");
+        devPanel("< DevPanel />@/UI/DevPanel/DevPanel");
     end;
     subgraph Stage;
         fullScreenPerform("< FullScreenPerform />\n@/FullScreenPerform/\nFullScreenPerform");
@@ -30,10 +30,6 @@ graph TB;
         fullScreenClick("< div id='FullScreenClick'>");
         introContainer("< IntroContainer />")
     end;
-    subgraph startContinueGame.ts;
-        startGame("startGame()");
-        continueGame("continueGame()");
-    end;
     subgraph WebGAL;
         sceneManager("sceneManager\n@/Core/Modules/scene");
         backlogManager("backlogManager\n@/Core/Modules/backlog");
@@ -45,17 +41,17 @@ graph TB;
         pixiStage("PixiStage\n@/Core/controller/stage/\npixi/PixiController");
         performController("PerformController@/\nCore/Modules/perform/\nperformController")
     end;
-    initializeScript("@/Core/initializeScript.ts");
-    nextSentence("@/Core/controller/gamePlay/nextSentence.ts")
-    scriptExecutor("@/Core/controller/gamePlay/scriptExecutor.ts");
-    restoreScene("@/Core/controller/scene/restoreScene.ts");
-
-    app--> initializeScript-->WebGAL;
+    subgraph startContinueGame.ts;
+        startGame("startGame()");
+        continueGame("continueGame()");
+    end;
+    app -.-> App;
+    stage -.-> Stage;
+    gameplay -.-> Gameplay;
     index --> main --> app;
-    title--> startGame & continueGame -->nextSentence --> scriptExecutor --o sceneManager;
-    nextSentence --o performController;
-    continueGame --> restorePerform;
-    scriptExecutor --> restoreScene --> nextSentence --> nextSentence;
+    app--> initializeScript-->WebGAL;
+    title--> startGame & continueGame;
+
 
 
 ```
