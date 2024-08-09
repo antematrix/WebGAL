@@ -1,0 +1,16 @@
+{
+  "name": "@webgal/plugin",
+  "version": "0.0.1",
+  "description": "",
+  "repository": "",
+  "author": "adam@antematrix.org",
+  "type": "module",
+  "license": "MPL-2.0",
+  "private": true,
+  "dependencies": {
+     "webgal": "workspace:^4.5.4"
+  },
+  "devDependencies": {
+    "tsconfig-paths": "^4.2.0"
+  }
+}
